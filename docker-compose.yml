@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    image: teaboom-ulun:local
+    container_name: teaboom-ulun
+    ports:
+      - "8088:80"
+    restart: unless-stopped

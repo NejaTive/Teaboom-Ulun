@@ -4,7 +4,23 @@
 
 ## Запуск
 
-Сервер не обязателен — достаточно открыть файл (стили уже скомпилированы в `css/styles.css`):
+### Docker Compose
+
+```bash
+docker compose up -d --build
+```
+
+Открыть [http://localhost:8088](http://localhost:8088).
+
+Остановить:
+
+```bash
+docker compose down
+```
+
+### Без Docker
+
+Сервер не обязателен — достаточно открыть `index.html` (стили уже в `css/styles.css`):
 
 ```bash
 # Windows
@@ -40,18 +56,14 @@ npm run watch:css    # следить за изменениями
 ## Структура
 
 ```
-product-card/
 ├── index.html
-├── scss/
-│   ├── styles.scss
-│   ├── _variables.scss
-│   ├── _base.scss
-│   ├── _layout.scss
-│   ├── _product.scss
-│   └── _responsive.scss
-├── css/styles.css
+├── scss/ …              # исходники стилей
+├── css/styles.css       # собранный CSS
 ├── js/main.js
 ├── images/
+├── Dockerfile
+├── docker-compose.yml
+├── nginx.conf
 ├── package.json
 └── README.md
 ```
