@@ -1,0 +1,261 @@
+@use "variables" as *;
+
+.product {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.05fr);
+  gap: 36px 48px;
+  padding: 28px;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-soft;
+
+  &__gallery {
+    min-width: 0;
+  }
+
+  &__image {
+    margin: 0;
+    padding: 12px;
+    background: $color-muted-bg;
+    border-radius: $radius;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  &__category {
+    margin: 0 0 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    a {
+      color: $color-muted;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color-text-dark;
+  }
+
+  &__sku {
+    margin: 0 0 20px;
+    font-size: 13px;
+    color: $color-muted;
+  }
+
+  &__packs {
+    margin: 0 0 22px;
+    padding: 0;
+    border: 0;
+    min-inline-size: 0;
+    width: 100%;
+  }
+
+  &__packs-label {
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text-dark;
+  }
+
+  &__price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 20px;
+    margin-bottom: 22px;
+    width: 100%;
+  }
+
+  &__stock {
+    margin: 0;
+    font-size: 13px;
+    color: $color-muted;
+
+    span {
+      color: $color-price;
+      font-weight: 600;
+    }
+  }
+
+  &__description {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid $color-border;
+    width: 100%;
+
+    &-title {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-text-dark;
+    }
+
+    p {
+      margin: 0 0 10px;
+      color: $color-text;
+      max-width: 52ch;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.packs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__btn {
+    min-width: 72px;
+    padding: 10px 14px;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    background: $color-muted-bg;
+    color: $color-text-dark;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background $transition,
+      border-color $transition,
+      box-shadow $transition,
+      transform $transition;
+
+    &:hover {
+      border-color: #cfcfcf;
+      background: #eef0f2;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-yellow;
+      outline-offset: 2px;
+    }
+
+    &.is-active {
+      background: $color-yellow;
+      border-color: $color-yellow;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+
+      &:hover {
+        background: $color-yellow-hover;
+        border-color: $color-yellow-hover;
+      }
+    }
+  }
+}
+
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+
+  &__current {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    color: $color-price;
+  }
+
+  &__old {
+    font-size: 15px;
+    font-weight: 400;
+    color: $color-muted;
+    text-decoration: line-through;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+}
+
+.btn-cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: $radius;
+  background: $color-green;
+  color: $color-text-dark;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background $transition,
+    transform $transition,
+    box-shadow $transition;
+
+  &:hover {
+    background: $color-green-hover;
+    box-shadow: 0 4px 12px rgba(120, 140, 60, 0.18);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-yellow;
+    outline-offset: 2px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+  }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 20;
+  transform: translateX(-50%);
+  padding: 12px 18px;
+  border-radius: $radius;
+  background: $color-text-dark;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  &[hidden] {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+  }
+}

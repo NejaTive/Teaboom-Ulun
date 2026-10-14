@@ -1,0 +1,11 @@
+{
+  "name": "teaboom-product-card",
+  "private": true,
+  "scripts": {
+    "build:css": "sass scss/styles.scss css/styles.css --style=expanded --no-source-map",
+    "watch:css": "sass --watch scss/styles.scss:css/styles.css --style=expanded --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.86.0"
+  }
+}

@@ -1,0 +1,74 @@
+@use "variables" as *;
+
+:root {
+  --color-bg: #{$color-bg};
+  --color-surface: #{$color-surface};
+  --color-cream: #{$color-cream};
+  --color-muted-bg: #{$color-muted-bg};
+  --color-text: #{$color-text};
+  --color-text-dark: #{$color-text-dark};
+  --color-muted: #{$color-muted};
+  --color-border: #{$color-border};
+  --color-yellow: #{$color-yellow};
+  --color-yellow-hover: #{$color-yellow-hover};
+  --color-green: #{$color-green};
+  --color-green-hover: #{$color-green-hover};
+  --color-price: #{$color-price};
+  --color-link: #{$color-link};
+  --shadow-soft: #{$shadow-soft};
+  --radius: #{$radius};
+  --radius-lg: #{$radius-lg};
+  --font: #{$font};
+  --container: #{$container};
+  --transition: #{$transition};
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: $font;
+  font-size: 15px;
+  line-height: 1.55;
+  color: $color-text;
+  background-color: $color-bg;
+  background-image: url("../images/pattern.png");
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: 660px auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-text-dark;
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+.container {
+  width: min(100% - 32px, $container);
+  margin-inline: auto;
+}
